@@ -2,7 +2,7 @@
 #include "config.h"
 
 namespace {
-  DCMotor* mcnm[3];
+  // DCMotor* mcnm[3];
   uint8_t totalFBMotorCount = 0;
 }
 
@@ -18,6 +18,7 @@ void DCMotor::init() {
 
   if (useEncoder) {
     encoder = new AMT(AMT_dip[totalFBMotorCount], pins);
+    encoder->init();
     float* k[3] = mcnmPID_Param[totalFBMotorCount];
     totalFBMotorCount++;
 
