@@ -20,6 +20,10 @@ const float mcnmPID_Param[3][3] = { // Kp, Ki, Kd
   {10.0, 0.0, 0.0}
 };
 
+const uint8_t ROBOT_NUM = 1   // mecanum1
+// const uint8_t ROBOT_NUM = 2   // mecanum2
+// const uint8_t ROBOT_NUM = 3   // mecanum3
+
 const bool DEBUG_MODE = true;
 const int SERIAL_BAUD_RATE = 115200;
 
