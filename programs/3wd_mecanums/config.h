@@ -11,7 +11,7 @@ const uint8_t PIN_UART2_TX = 26;
 const uint8_t PIN_UART2_RX = 27;
 
 // AMTのdip配置
-const int AMT_dip[3] = {0b0000, 0b0000, 0b0000};
+const uint8_t AMT_dip[3] = {0b0000, 0b0000, 0b0000};
 
 // PIDパラメータ
 const float mcnmPID_Param[3][3] = { // Kp, Ki, Kd
@@ -20,9 +20,9 @@ const float mcnmPID_Param[3][3] = { // Kp, Ki, Kd
   {10.0, 0.0, 0.0}
 };
 
-const uint8_t ROBOT_NUM = 1   // mecanum1
-// const uint8_t ROBOT_NUM = 2   // mecanum2
-// const uint8_t ROBOT_NUM = 3   // mecanum3
+const uint8_t ROBOT_NUM = 1;  // mecanum1
+// const uint8_t ROBOT_NUM = 2;  // mecanum2
+// const uint8_t ROBOT_NUM = 3;  // mecanum3
 
 const bool DEBUG_MODE = true;
 const int SERIAL_BAUD_RATE = 115200;

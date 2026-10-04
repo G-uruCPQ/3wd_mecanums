@@ -9,26 +9,26 @@ namespace {
   void encoderISR3() { if (encoder[2]) encoder[2]->interruptMethod(); }
 }
 
-AMT::AMT(uint8_t dipSwitch, uint8_t* pins)
+AMT::AMT(const uint8_t dipSwitch, const uint8_t* pins)
   : dipSwitch(dipSwitch), pins(pins) {}
 
 void AMT::init() {
-  pinMode(pin[2], INPUT);
-  pinMode(pin[3], INPUT);
+  pinMode(pins[2], INPUT);
+  pinMode(pins[3], INPUT);
 
   totalEncoderCount++;
   switch (totalEncoderCount) {
     case 1:
       encoder[0] = this;
-      attachInterrupt(digitalPinToInterrupt(pinA), encoderISR1, CHANGE);
+      attachInterrupt(digitalPinToInterrupt(pins[2]), encoderISR1, CHANGE);
       break;
     case 2:
       encoder[1] = this;
-      attachInterrupt(digitalPinToInterrupt(pinA), encoderISR2, CHANGE);
+      attachInterrupt(digitalPinToInterrupt(pins[2]), encoderISR2, CHANGE);
       break;
     case 3:
       encoder[2] = this;
-      attachInterrupt(digitalPinToInterrupt(pinA), encoderISR3, CHANGE);
+      attachInterrupt(digitalPinToInterrupt(pins[2]), encoderISR3, CHANGE);
       break;
     default:
       Serial.println("Too many encoders");
@@ -58,7 +58,7 @@ void AMT::init() {
   }
 
 
-  prevState = (digitalRead(pinA) << 1) | digitalRead(pinB);
+  prevState = (digitalRead(pins[2]) << 1) | digitalRead(pins[3]);
 
   counter = 0;
 }
@@ -80,7 +80,7 @@ void AMT::init() {
 // }
 
 void AMT::interruptMethod() {
-  int currState = (digitalRead(pinA) << 1) | digitalRead(pinB);
+  int currState = (digitalRead(pins[2]) << 1) | digitalRead(pins[3]);
   int diff = (currState - prevState);
 
   if (diff == 1 || diff == -1) {

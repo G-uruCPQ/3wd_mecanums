@@ -7,7 +7,7 @@
 
 class DCMotor {
 public:
-  DCMotor(uint8_t* pins = nullptr, bool useEncoder = true);
+  DCMotor(const uint8_t* pins = nullptr, bool useEncoder = true);
   ~DCMotor() = default;
 
   void init();
@@ -15,7 +15,7 @@ public:
   float targetRpm;
 
 private:
-  uint8_t* pins;
+  const uint8_t* pins;
 
   AMT* encoder;
   Pid* pid;

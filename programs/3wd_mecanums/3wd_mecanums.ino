@@ -4,9 +4,9 @@
 #include "DCMotor.h"
 #include "Kinematics.h"
 
-DCMotor mcnm1(&PIN_MCNM[0], true);
-DCMotor mcnm2(&PIN_MCNM[1], true);
-DCMotor mcnm3(&PIN_MCNM[2], true);
+DCMotor mcnm1(PIN_MCNM[0], true);
+DCMotor mcnm2(PIN_MCNM[1], true);
+DCMotor mcnm3(PIN_MCNM[2], true);
 Kinematics kinematics(mcnm1, mcnm2, mcnm3);
 
 

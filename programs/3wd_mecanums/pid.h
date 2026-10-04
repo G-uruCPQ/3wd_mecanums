@@ -5,7 +5,7 @@
 
 class Pid{
   public:
-    Pid(float* k = nullptr);
+    Pid(const float* k = nullptr);
     ~Pid() = default;
 
     void init();
@@ -13,7 +13,7 @@ class Pid{
     // int debug();
 
   private:
-    float* k;
+    const float kp, ki, kd;
     float pErr, iErr, dErr;
     float preErr;
     float integralMax;

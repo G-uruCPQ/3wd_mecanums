@@ -14,11 +14,11 @@ void Kinematics::init() {
   motor3->init();
 
   switch (ROBOT_NUM) {
-    case 1:  matrix = &MECANUM1; break;
-    case 2:  matrix = &MECANUM2; break;
-    case 3:  matrix = &MECANUM3; break;
+    case 1: matrix = MECANUM1; break;
+    case 2: matrix = MECANUM2; break;
+    case 3: matrix = MECANUM3; break;
 
-    default: matrix = &MECANUM_ZEROS; break;
+    default: matrix = MECANUM_ZEROS; break;
   }
 }
 

@@ -1,7 +1,7 @@
 #include "pid.h"
 #include "config.h"
 
-Pid::Pid(float* k) 
+Pid::Pid(const float* k) 
   : kp(k[0]), ki(k[1]), kd(k[2]),
     pErr(0), iErr(0), dErr(0), preErr(0) {}
 

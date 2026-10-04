@@ -17,7 +17,7 @@ private:
   DCMotor* motor2;
   DCMotor* motor3;
 
-  float* matrix;
+  const float (*matrix)[3];
 
   const float wheelRadius = 0.030;  // [m] φ60mm → 0.030
   const float robotRadius = 0.225;  // [m] φ450mm → 0.225

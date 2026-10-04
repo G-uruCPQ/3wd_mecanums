@@ -6,7 +6,7 @@ namespace {
   uint8_t totalFBMotorCount = 0;
 }
 
-DCMotor::DCMotor(uint8_t* pins, bool useEncoder)
+DCMotor::DCMotor(const uint8_t* pins, bool useEncoder)
   : pins(pins), useEncoder(useEncoder),
     targetRpm(0), preRev(0), prevTime(0) {}
 
@@ -19,7 +19,7 @@ void DCMotor::init() {
   if (useEncoder) {
     encoder = new AMT(AMT_dip[totalFBMotorCount], pins);
     encoder->init();
-    float* k[3] = mcnmPID_Param[totalFBMotorCount];
+    const float* k = mcnmPID_Param[totalFBMotorCount];
     totalFBMotorCount++;
 
     pid = new Pid(k);
