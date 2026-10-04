@@ -6,16 +6,14 @@
 
 class Kinematics {
 public:
-  Kinematics(DCMotor& m1, DCMotor& m2, DCMotor& m3);
+  Kinematics(DCMotor* motor);
   ~Kinematics() = default;
 
   void init();
   void update(float vx, float vy, float vrot);
 
 private:
-  DCMotor* motor1;
-  DCMotor* motor2;
-  DCMotor* motor3;
+  DCMotor* motor;
 
   const float (*matrix)[3];
 

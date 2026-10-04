@@ -2,7 +2,7 @@
 #include "config.h"
 
 namespace {
-  // DCMotor* mcnm[3];
+  DCMotor* mcnm[3];
   uint8_t totalFBMotorCount = 0;
 }
 

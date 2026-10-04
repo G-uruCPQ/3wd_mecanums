@@ -2,16 +2,11 @@
 #include "config.h"
 #include "mecanums.h"
 
-Kinematics::Kinematics(DCMotor& m1, DCMotor& m2, DCMotor& m3) {
-  motor1 = &m1;
-  motor2 = &m2;
-  motor3 = &m3;
-}
+Kinematics::Kinematics(DCMotor* motor)
+  : motor(motor) {}
 
 void Kinematics::init() {
-  motor1->init();
-  motor2->init();
-  motor3->init();
+  for (size_t i = 0; i < 3; i++) motor[i].init();
 
   switch (ROBOT_NUM) {
     case 1: matrix = MECANUM1; break;
@@ -23,5 +18,18 @@ void Kinematics::init() {
 }
 
 void Kinematics::update(float vx, float vy, float vrot) {
+  float w[3] = {
+    matrix[0][0] * vx + matrix[0][1] * vy + matrix[0][2] * vrot,
+    matrix[1][0] * vx + matrix[1][1] * vy + matrix[1][2] * vrot,
+    matrix[2][0] * vx + matrix[2][1] * vy + matrix[2][2] * vrot
+  };
 
+  if (DEBUG_MODE) Serial.printf("%f %f %f\n", w[0], w[1], w[2]);
+
+  for (size_t i = 0; i < 3; i++) {
+    motor[i].targetRpm = deg2rpm(w[i]);
+    motor[i].update();
+  }
 }
+
+float Kinematics::deg2rpm(float degPerSec) {return degPerSec * 60.0f / 360.0f;}
