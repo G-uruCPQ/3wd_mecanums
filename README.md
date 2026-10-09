@@ -39,6 +39,7 @@ programs/3wd_mecanums/
 └── cad/
     ├── 3wd_mecanum.ipj                       # Inventorプロジェクトファイル
     ├── common_parts/                         # 共通パーツ（メカナムホイール、モータ等）
+    ├── standard_assy/                        # 駆動基幹ユニット
     ├── mecanum1/                             # 3輪オムニ配置機
     ├── mecanum2/                             # 対向2輪配置機
     ├── mecanum3/                             # 
