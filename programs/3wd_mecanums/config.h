@@ -20,9 +20,15 @@ const float mcnmPID_Param[3][3] = { // Kp, Ki, Kd
   {10.0, 0.0, 0.0}
 };
 
+const float ROBOT_RADIUS = 0.400 / 2;
+
 const uint8_t ROBOT_NUM = 1;  // mecanum1
 // const uint8_t ROBOT_NUM = 2;  // mecanum2
 // const uint8_t ROBOT_NUM = 3;  // mecanum3
+
+static std::array<std::array<int, 2>, 2> current;
+
+uint16_t v[3] = {0, 0, 0};  // {vx, vy, vrot}
 
 const bool DEBUG_MODE = true;
 const int SERIAL_BAUD_RATE = 115200;
