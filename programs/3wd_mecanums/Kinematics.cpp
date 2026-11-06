@@ -24,7 +24,7 @@ void Kinematics::update(float vx, float vy, float vrot) {
     matrix[2][0] * vx + matrix[2][1] * vy + matrix[2][2] * vrot
   };
 
-  if (DEBUG_MODE) Serial.printf("%f %f %f\n", w[0], w[1], w[2]);
+  // if (DEBUG_MODE) Serial.printf("%f %f %f\n", w[0], w[1], w[2]);
 
   for (size_t i = 0; i < 3; i++) {
     motor[i].targetRpm = deg2rpm(w[i]);

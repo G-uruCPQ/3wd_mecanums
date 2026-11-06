@@ -33,6 +33,10 @@ public:
 
   void onWrite(BLECharacteristic* characteristic) override {
     String val = characteristic->getValue();
+
+    // Serial.print("[BLE RX] ");
+    // Serial.println(val);
+
     if (val.length() > 0) {
       val.replace(String((char)0x01), "");
       val.replace(String((char)0x02), "");
@@ -48,6 +52,14 @@ public:
         controller.lastReceived[key][0] = coords.substring(0, commaIndex).toInt();
         controller.lastReceived[key][1] = coords.substring(commaIndex + 1).toInt();
       }
+
+      // int key = cmd.substring(1).toInt(); // "d1" → 1, "d0" → 0
+
+      // int commaIndex = coords.indexOf(",");
+      // if (commaIndex != -1) {
+      //   controller.lastReceived[key][0] = coords.substring(0, commaIndex).toInt();
+      //   controller.lastReceived[key][1] = coords.substring(commaIndex + 1).toInt();
+      // }
     }
   }
 
@@ -89,9 +101,17 @@ void MyBLEController::begin(const char* deviceName) {
 void MyBLEController::update() {
 }
 
-std::array<std::array<int, 2>, 2> MyBLEController::getLastReceived() const {
-  return lastReceived;
+std::array<std::array<int, 2>, 2>
+MyBLEController::getLastReceived() const {
+  portENTER_CRITICAL(&dataMux);
+  auto snapshot = lastReceived;
+  portEXIT_CRITICAL(&dataMux);
+  return snapshot;
 }
+
+// std::array<std::array<int, 2>, 2> MyBLEController::getLastReceived() const {
+//   return lastReceived;
+// }
 
 bool MyBLEController::isDeviceConnected() const {
   return deviceConnected;

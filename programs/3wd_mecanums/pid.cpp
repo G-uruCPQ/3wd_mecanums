@@ -24,7 +24,7 @@ int Pid::pid_out(float tagRpm, float nowRpm, float dt) {
   float dErr = (pErr - preErr) / (dt / 1000.0);
   preErr = pErr;
 
-  if (DEBUG_MODE) {Serial.printf("%f %f %f",pErr,iErr,dErr); Serial.println("");}
+  // Serial.printf("%f %f %f\n",pErr,iErr,dErr);
 
   return (int)(kp * pErr + ki * iErr - kd * dErr);
 }

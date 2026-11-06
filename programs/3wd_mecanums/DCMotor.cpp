@@ -39,7 +39,7 @@ void DCMotor::update() {
     prevTime = now;
 
     float nowRev = encoder->getRevolution();
-    float nowRpm = (nowRev - preRev) / (1000 * dt);
+    float nowRpm = (nowRev - preRev) * 60000.0f / dt;
     control = pid->pid_out(targetRpm, nowRpm, dt);
     preRev = nowRev;
   } else {

@@ -44,6 +44,9 @@ private:
   // 接続パラメータ更新要求
   void requestConnectionParamUpdate();
 
+  // データの排他的制御
+  mutable portMUX_TYPE dataMux = portMUX_INITIALIZER_UNLOCKED;
+
   // コールバックからアクセスしやすいよう、友達宣言
   friend class ServerCallbacks;
   friend class CharacteristicCallbacks;
