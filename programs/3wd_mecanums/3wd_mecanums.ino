@@ -60,16 +60,16 @@ void loop(){
     current[1][0] - 512   // rot
   };
   
-  int vx   = (abs(raw_v[0]) > 15) ? raw_v[0] *.8f : 0;
-  int vy   = (abs(raw_v[1]) > 15) ? raw_v[1] *.8f : 0;
-  int vrot = (abs(raw_v[2]) > 15) ? raw_v[2] *.8f : 0;
+  float vx   = (abs(raw_v[0]) > 15) ? raw_v[0] / 512.0f : 0;
+  float vy   = (abs(raw_v[1]) > 15) ? raw_v[1] / 512.0f : 0;
+  float vrot = (abs(raw_v[2]) > 15) ? raw_v[2] / 512.0f : 0;
 
   // 通信断絶時停止
   if (!myBLE.isDeviceConnected()) {vx = 0; vy = 0; vrot = 0;}
 
   kinematics.update(vx, vy, vrot);
 
-  if (DEBUG_MODE) Serial.printf("BLE: %d  vx:%d vy:%d vrot:%d\n", myBLE.isDeviceConnected(), vx, vy, vrot);
+  if (DEBUG_MODE) Serial.printf("BLE: %d  vx:%f vy:%f vrot:%f\n", myBLE.isDeviceConnected(), vx, vy, vrot);
 
   delay(10);
 }
