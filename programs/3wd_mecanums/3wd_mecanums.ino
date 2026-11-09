@@ -69,7 +69,13 @@ void loop(){
 
   kinematics.update(vx, vy, vrot);
 
-  if (DEBUG_MODE) Serial.printf("BLE: %d  vx:%f vy:%f vrot:%f\n", myBLE.isDeviceConnected(), vx, vy, vrot);
-
+  if (DEBUG_MODE) {
+    Serial.printf("BLE: %d", myBLE.isDeviceConnected());
+    Serial.printf("  vx:%f vy:%f vrot:%f", vx, vy, vrot);
+    // Serial.printf("  w1:%f w2:%f w3:%f", kinematics.w[0], kinematics.w[1], kinematics.w[2]);
+    // Serial.printf("  rev1:%f rev2:%f rev3:%f", kinematics.motor[0].encoder->getRevolution(), kinematics.motor[1].encoder->getRevolution(), kinematics.motor[2].encoder->getRevolution());
+    Serial.printf("  rpm1:%f rpm2:%f rpm3:%f", kinematics.motor[0].nowRpm, kinematics.motor[1].nowRpm, kinematics.motor[2].nowRpm);
+    Serial.println();
+  }
   delay(10);
 }

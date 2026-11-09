@@ -11,9 +11,12 @@ public:
 
   void init();
   void update(float vx, float vy, float vrot);
+  float w[3] = {.0f, .0f, .0f};
+
+  DCMotor* motor;
 
 private:
-  DCMotor* motor;
+  // DCMotor* motor;
 
   const float (*matrix)[3];
 

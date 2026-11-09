@@ -21,11 +21,15 @@ void Kinematics::update(float vx, float vy, float vrot) { //vx, vy, vrot: -1.0 ~
   constexpr float MAX_RPM = 45.0f;
   constexpr float ROT_GAIN = 0.7f;
 
-  float w[3] = {
-    matrix[0][0] * vx + matrix[0][1] * vy + matrix[0][2] * ROT_GAIN * vrot,
-    matrix[1][0] * vx + matrix[1][1] * vy + matrix[1][2] * ROT_GAIN * vrot,
-    matrix[2][0] * vx + matrix[2][1] * vy + matrix[2][2] * ROT_GAIN * vrot
-  };
+  // float w[3] = {
+  //   matrix[0][0] * vx + matrix[0][1] * vy + matrix[0][2] * ROT_GAIN * vrot,
+  //   matrix[1][0] * vx + matrix[1][1] * vy + matrix[1][2] * ROT_GAIN * vrot,
+  //   matrix[2][0] * vx + matrix[2][1] * vy + matrix[2][2] * ROT_GAIN * vrot
+  // };
+
+  w[0] = matrix[0][0] * vx + matrix[0][1] * vy + matrix[0][2] * ROT_GAIN * vrot;
+  w[1] = matrix[1][0] * vx + matrix[1][1] * vy + matrix[1][2] * ROT_GAIN * vrot;
+  w[2] = matrix[2][0] * vx + matrix[2][1] * vy + matrix[2][2] * ROT_GAIN * vrot;
 
   float maxAbs = 1.0f;
   for (size_t i = 0; i < 3; i++) maxAbs = max(maxAbs, fabsf(w[i]));

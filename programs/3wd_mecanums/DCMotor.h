@@ -13,11 +13,14 @@ public:
   void init();
   void update();
   float targetRpm;
+  float nowRpm;
+
+  AMT* encoder;
 
 private:
   const uint8_t* pins;
 
-  AMT* encoder;
+  // AMT* encoder;
   Pid* pid;
   bool useEncoder;
 
