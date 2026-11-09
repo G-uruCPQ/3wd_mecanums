@@ -60,9 +60,9 @@ void loop(){
     current[1][0] - 512   // rot
   };
   
-  float vx   = (abs(raw_v[0]) > 15) ? raw_v[0] / 512.0f : 0;
-  float vy   = (abs(raw_v[1]) > 15) ? raw_v[1] / 512.0f : 0;
-  float vrot = (abs(raw_v[2]) > 15) ? raw_v[2] / 512.0f : 0;
+  float vx   = (abs(raw_v[0]) > 15) ?  raw_v[0] / 512.0f : 0;
+  float vy   = (abs(raw_v[1]) > 15) ?  raw_v[1] / 512.0f : 0;
+  float vrot = (abs(raw_v[2]) > 15) ? -raw_v[2] / 512.0f : 0;
 
   // 通信断絶時停止
   if (!myBLE.isDeviceConnected()) {vx = 0; vy = 0; vrot = 0;}
