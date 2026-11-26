@@ -10,19 +10,25 @@
 programs/3wd_mecanums/
 ├── 3wd_mecanums.ino                          # main
 ├── config.h                                  # 定数等
+├── mecanums.h                                # 採用した型の逆運動学テンソル
 ├── MecanumControll.h                         # メカナム運動学計算のヘッダー
 ├── MecanumControll.cpp                       # メカナム運動学計算の実装
+├── DCMotor.h                                 # モータ駆動ヘッダー
+├── DCMotor.cpp                             　# モータ駆動の実装
 ├── AMT.h                                     # AMT10エンコーダヘッダー
 ├── AMT.cpp                                   # AMT10エンコーダ実装
 ├── pid.h                                     # pid計算のヘッダー
-└── pid.cpp                                   # pid計算の実装
+├── pid.cpp                                   # pid計算の実装
+├── myBLEController.h                         # MicroBlue復号ヘッダー
+└── myBLEController.cpp                       # MicroBlue復号実装
 </pre>
 
 3輪メカナムの制御プログラム。
-`config.h`の`CHASSY_TIPE`を0～2選択で各機種変換行列の切り替えができます。
+~~`config.h`の`CHASSY_TIPE`を0～2選択で各機種変換行列の切り替えができます。~~
+何種類か作るつもりでしたが、<!-- 主に余裕の面から -->1種類だけになりました。
 
 ### cad
-3機種の3D CADファイル（Autodesk Inventor利用）
+<!-- 3機種の -->3D CADファイル（Autodesk Inventor利用）
 
 ## 仕様ソフトウェアおよびバージョン
 - ESP32Wroom*
@@ -41,7 +47,5 @@ programs/3wd_mecanums/
     ├── common_parts/                         # 共通パーツ（メカナムホイール、モータ等）
     ├── standard_assy/                        # 駆動基幹ユニット
     ├── mecanum1/                             # 3輪オムニ配置機
-    ├── mecanum2/                             # 対向2輪配置機
-    ├── mecanum3/                             # 
-    └── step/                                 # 各機STEP版
+    └── step/                                 # STEP版
 </pre>
