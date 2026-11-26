@@ -18,7 +18,7 @@ void Kinematics::init() {
 }
 
 void Kinematics::update(float vx, float vy, float vrot) { //vx, vy, vrot: -1.0 ~ 1.0 
-  constexpr float MAX_RPM = 45.0f;
+  constexpr float MAX_RPM = 80.0f;
   constexpr float ROT_GAIN = 0.7f;
 
   // float w[3] = {

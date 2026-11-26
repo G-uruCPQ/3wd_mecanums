@@ -15,9 +15,9 @@ const uint8_t AMT_dip[3] = {0b0000, 0b0000, 0b0000};
 
 // PIDパラメータ
 const float mcnmPID_Param[3][3] = { // Kp, Ki, Kd
-  {10.0, 0.0, 0.0},
-  {10.0, 0.0, 0.0},
-  {10.0, 0.0, 0.0}
+  {4.0, 0.5, 0.01},
+  {4.0, 0.5, 0.0},
+  {4.0, 0.5, 0.0}
 };
 
 const float ROBOT_RADIUS = 0.400 / 2;
@@ -28,7 +28,7 @@ const uint8_t ROBOT_NUM = 1;  // mecanum1
 
 static std::array<std::array<int, 2>, 2> current;
 
-const bool DEBUG_MODE = true;
+const bool DEBUG_MODE = false;
 const int SERIAL_BAUD_RATE = 115200;
 
 #endif
